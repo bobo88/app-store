@@ -1,11 +1,11 @@
 <script lang="tsx">
 import { computed, defineComponent, reactive, ref } from 'vue'
 import { useSearch } from './useSearch'
-import { useFreeTopList } from './useFreeTopList'
+import { useTopList } from './useTopList'
 import TopSwipe from '@/components/TopSwipe.vue'
 
 import { getHotTop, getDetailsByIds } from './api'
-import type { SimpleTopList, AppDetailsInfo, StateType } from './type'
+import type { SimpleTopList, StateType } from './type'
 
 export default defineComponent({
   name: 'IndexView',
@@ -71,7 +71,7 @@ export default defineComponent({
     getHotList()
 
     const searchHook = useSearch(state)
-    const freeTopListHook = useFreeTopList(state)
+    const freeTopListHook = useTopList(state)
     return () => {
       return (
         <div class="home-page">

@@ -2,7 +2,7 @@ import { computed, ref } from 'vue'
 import { getFreeTop } from './api'
 import type { SimpleTopList, StateType } from './type'
 
-export const useFreeTopList = (state: StateType) => {
+export const useTopList = (state: StateType) => {
   const finished = ref(false)
   const loading = ref(false)
   const freeTopList = ref<SimpleTopList[]>([])
@@ -19,9 +19,9 @@ export const useFreeTopList = (state: StateType) => {
   })
 
   // 100
-  const getFreeTopList = () => {
+  const getTopList = () => {
     getFreeTop(100).then(async res => {
-      // 根据ids进行详情查询
+      // 可以根据ids进行详情查询
       const tempArr =
         state.operateDetailsByIds &&
         (await state.operateDetailsByIds(res.ids.join(','), res.list))
@@ -29,13 +29,14 @@ export const useFreeTopList = (state: StateType) => {
       finished.value = true
     })
   }
-  getFreeTopList()
+  getTopList()
 
   return () => (
     <van-list
       v-model:loading={loading.value}
+      loading-text="加载中，请稍候..."
       finished={finished.value}
-      finished-text="没有更多了"
+      finished-text="No More."
     >
       {topListFilter.value &&
         topListFilter.value.map((item, index) => {
