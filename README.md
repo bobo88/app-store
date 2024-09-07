@@ -1,25 +1,18 @@
-# vue-project
+# App Store（仿）
 
-## 一、项目运行操作：
+## 一、项目运行：
 
-- 安装：
+```sh
+# 1. 安装依赖
+yarn
 
-  ```sh
-  yarn
-  ```
+# 2. 运行项目
+yarn dev
 
-- 运行：
+# 3. 打包项目
+yarn build
+```
 
-  ```sh
-  yarn dev
-  ```
-
-- 打包：
-
-  ```sh
-  yarn build
-  ```
-
-## 二、项目预览效果截图：
+## 二、项目截图：
 
 ![demo](./demo.png)
